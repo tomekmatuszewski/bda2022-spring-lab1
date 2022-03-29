@@ -23,3 +23,7 @@ s3.meta.client.upload_fileobj(file_object, BUCKET_NAME, 'data-from-mem-2.txt',
                                   'ACL': 'public-read',
                                   # 'GrantRead': 'uri="http://acs.amazonaws.com/groups/global/AllUsers"',
                               })
+
+bucket = s3.Bucket(BUCKET_NAME)
+for o in bucket.objects.all():
+    print(o.get()['Body'].read())
